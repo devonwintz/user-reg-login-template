@@ -105,7 +105,7 @@
             "type": "password",
             "name": "password",
             "label": "Password",
-            "placeholder": "Password",
+            "placeholder": "Create Password",
             "rules": [
               {
                 "required": true,
@@ -123,7 +123,7 @@
             "type": "password",
             "name": "confirmPassword",
             "label": "Password",
-            "placeholder": "Re-enter Password",
+            "placeholder": "Confirm Password",
             "rules": [
               {
                 "required": true,
@@ -163,7 +163,7 @@
             "name": "login",
             "prefix": "Already have an account?",
             "value": "Login",
-            "url": "/login"
+            "url": "/"
           }
         ]
       }
