@@ -1,4 +1,4 @@
-import './Login.css';
+import './Signup.css';
 import config from '../config.json';
 import React, {useState} from 'react';
 import { Helmet } from 'react-helmet';
@@ -7,14 +7,12 @@ import Icon from '../Icon';
 
 
 
-const Login = () => {
-  const cfg = config.login
-  const signUpLink = cfg.actions[0].links[0]
-  const forgetPWLink = cfg.actions[0].links[1]
+const Signup = () => {
+  const cfg = config.signup
+  const loginLink = cfg.actions[0].links[0]
 
   const formFields = cfg.fields[0].input.reduce((obj, val) => {
     obj[val.name] = "";
-    obj["rememberMe"] = false;
     return obj
   }, {})
 
@@ -31,10 +29,10 @@ const Login = () => {
   return(
   <div>
     <Helmet>
-      <title>Login</title>
+      <title>Signup</title>
     </Helmet>
 
-    <Form className="login-form" onFinish={onSubmit}  onFinishFailed={onSubmitFailed} autoComplete="off">
+    <Form className="signup-form" onFinish={onSubmit}  onFinishFailed={onSubmitFailed} autoComplete="off">
       <h1 className="form-title">{cfg.title}</h1>
       
       {cfg.fields[0].input.map((input, inputIdx) => (
@@ -54,15 +52,6 @@ const Login = () => {
         </Form.Item>
       ))}
     <Form.Item>
-      <Checkbox 
-        onChange={(e) => setFormData({...formData, rememberMe: e.target.checked})}
-        value={formData.name}
-      >
-        Remember me
-      </Checkbox>
-      <a className="login-form-forgot" href={forgetPWLink.url}>
-        Forgot password
-      </a>
       {cfg.actions[0]
       .buttons.filter(button => button.display === true)
       .map((btn, btnIdx) => (
@@ -70,15 +59,15 @@ const Login = () => {
             key={btnIdx}
             type={btn.type}
             htmlType="submit"
-            className="login-form-button"
+            className="signup-form-button"
           >
             {btn.value}
         </Button>
       ))}
       <div>
-        {signUpLink.prefix}
-        <a href={signUpLink.url}>
-          {" "} {signUpLink.value}
+        {loginLink.prefix}
+        <a href={loginLink.url}>
+          {" "} {loginLink.value}
         </a>
       </div>
     </Form.Item>
@@ -87,4 +76,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signup
